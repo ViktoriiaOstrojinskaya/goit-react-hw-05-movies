@@ -1,5 +1,18 @@
-//import { fetchMovies } from 'components/services/api';
+import { fetchMovies } from 'components/services/api';
+//import { Link } from 'react-router-dom';
 
 export const Home = () => {
-  return <p>Home</p>;
+  fetchMovies();
+
+  return (
+    <>
+      <p>Home</p>
+
+      {/* <ul>
+        {results.map(result => (
+          <li>{result}</li>
+        ))}
+      </ul> */}
+    </>
+  );
 };
