@@ -1,17 +1,26 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://api.themoviedb.org/';
-const KEY = '500d9ce9bd19caed28c8e80a6fa70303';
-
-export const fetchMovies = () => {
-  const response = axios.get(`3/trending/movie/day?api_key=${KEY}`);
-  console.log(response);
-  return response.data;
+export const KEY = '500d9ce9bd19caed28c8e80a6fa70303';
+axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
+axios.defaults.headers.common['Authorization'] = KEY;
+axios.defaults.params = {
+  api_key: `${KEY}`,
 };
 
-// export const fetchMovies = () => {
-//   fetch(
-//     'https://api.themoviedb.org/3/trending/movie/day?api_key=500d9ce9bd19caed28c8e80a6fa70303'
-//   ).then(response => console.log(response));
+export const getTrending = async () => {
+  try {
+    const { data } = await axios.get(`trending/movie/day`);
+    return data;
+  } catch (error) {
+    console.error('Something went wrong. Try again!');
+  }
+};
 
-// };
+export const getMovieDetails = async movieId => {
+  try {
+    const { data } = await axios.get(`/movie/${movieId}`);
+    return data;
+  } catch (error) {
+    console.error('Something went wrong. Try again!');
+  }
+};
