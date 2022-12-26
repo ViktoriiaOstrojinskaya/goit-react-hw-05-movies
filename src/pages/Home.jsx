@@ -1,7 +1,6 @@
 import { MoviesList } from '../components/MoviesList';
 import { useState, useEffect } from 'react';
 import * as API from '../components/services/api';
-//import { Link } from 'react-router-dom';
 
 export const Home = () => {
   const [trending, setTrending] = useState([]);

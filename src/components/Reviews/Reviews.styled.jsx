@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 
-export const CastList = styled.ul`
+export const ReviewsList = styled.ul`
   margin-top: 30px;
-  list-style: none;
 `;

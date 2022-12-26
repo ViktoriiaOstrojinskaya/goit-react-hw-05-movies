@@ -43,8 +43,16 @@ export const getMovieReviews = async movieId => {
   }
 };
 
-export const searchMovies = async () => {
+export const searchMovies = async query => {
   try {
+    const query = 'batman';
+    const { data } = await axios.get(`/search/movie/`, {
+      params: {
+        query: query,
+        language: 'en-US',
+      },
+    });
+    return data;
   } catch (error) {
     console.error('Something went wrong. Try again!');
   }

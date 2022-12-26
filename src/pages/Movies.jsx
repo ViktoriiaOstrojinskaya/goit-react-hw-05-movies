@@ -1,3 +1,13 @@
+// import { useSearchParams } from 'react-router-dom';
+// import { useState, useEffect } from 'react';
+import { SearchBox } from '../components/SearchBox/SearchBox';
+//import { MoviesList } from '../components/MoviesList';
+//import * as API from '../components/services/api';
+
 export const Movies = () => {
-  return <p>Movies</p>;
+  return (
+    <main>
+      <SearchBox />
+    </main>
+  );
 };

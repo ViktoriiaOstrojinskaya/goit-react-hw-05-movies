@@ -1,8 +1,9 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { ReviewsCard } from './ReviewsCard';
-import { Loader } from './Loader/Loader';
-import * as API from '../components/services/api';
+import { ReviewsCard } from '../ReviewsCard/ReviewsCard';
+import { Loader } from '../Loader/Loader';
+import * as API from '../services/api';
+import { ReviewsList } from './Reviews.styled';
 
 export const Reviews = () => {
   const [reviews, setReviews] = useState([]);
@@ -34,10 +35,10 @@ export const Reviews = () => {
   }, [movieId]);
 
   return (
-    <ul>
+    <ReviewsList>
       <ReviewsCard reviews={reviews} />
       {error && <p>{error}</p>}
       {loading && <Loader />}
-    </ul>
+    </ReviewsList>
   );
 };

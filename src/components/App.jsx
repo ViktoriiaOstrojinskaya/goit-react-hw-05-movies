@@ -4,7 +4,7 @@ import { Movies } from 'pages/Movies';
 import { MovieDetails } from 'pages/MovieDetails';
 import { NotFound } from 'pages/NotFound';
 import { Cast } from './Cast/Cast';
-import { Reviews } from './Reviews';
+import { Reviews } from './Reviews/Reviews';
 import { SharedLayout } from './SharedLayout/SharedLayout';
 import { MainPage } from './App.styled';
 

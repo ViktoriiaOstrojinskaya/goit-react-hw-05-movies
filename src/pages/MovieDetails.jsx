@@ -2,6 +2,7 @@ import { useParams, Link, Outlet } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { MovieDescription } from '../components/MovieDescription/MovieDescription';
 import { Loader } from 'components/Loader/Loader';
+import { ButtonBack } from 'components/ButtonBack/ButtonBack';
 import * as API from '../components/services/api';
 
 export const MovieDetails = () => {
@@ -35,20 +36,21 @@ export const MovieDetails = () => {
 
   return (
     <div>
+      {loading && <Loader />}
+      <ButtonBack />
       <main>
-        <MovieDescription movieDetails={movieDetails} />
+        {movieDetails && <MovieDescription movieDetails={movieDetails} />}
       </main>
-      <ul>
+      <ul style={{ marginTop: '20px' }}>
         <li>
           <Link to="cast">Cast</Link>
         </li>
-        <li>
+        <li style={{ marginTop: '10px' }}>
           <Link to="reviews">Review</Link>
         </li>
       </ul>
       <Outlet />
       {error && <p>{error}</p>}
-      {loading && <Loader />}
     </div>
   );
 };
