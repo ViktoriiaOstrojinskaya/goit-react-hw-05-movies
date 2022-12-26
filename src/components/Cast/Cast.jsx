@@ -1,8 +1,9 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { CastCard } from './CastCard';
-import { Loader } from './Loader/Loader';
-import * as API from '../components/services/api';
+import { CastCard } from '../CastCard/CastCard';
+import { Loader } from '../Loader/Loader';
+import { CastList } from './Cast.styled';
+import * as API from '../services/api';
 
 export const Cast = () => {
   const [cast, setCast] = useState([]);
@@ -34,10 +35,10 @@ export const Cast = () => {
   }, [movieId]);
 
   return (
-    <ul>
+    <CastList>
       <CastCard cast={cast} />
       {error && <p>{error}</p>}
       {loading && <Loader />}
-    </ul>
+    </CastList>
   );
 };
