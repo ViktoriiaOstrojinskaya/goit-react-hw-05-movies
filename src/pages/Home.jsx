@@ -20,6 +20,7 @@ export const Home = () => {
 
   return (
     <main>
+      <h2>Trending Movie 🎥🍿</h2>
       <MoviesList movies={trending} />
     </main>
   );

@@ -1,3 +1,5 @@
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Route, Routes } from 'react-router-dom';
 import { Home } from 'pages/Home';
 import { Movies } from 'pages/Movies';
@@ -24,6 +26,7 @@ export const App = () => {
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
+      <ToastContainer autoClose={3000} theme="colored" />
     </MainPage>
   );
 };

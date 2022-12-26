@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { ReviewsCard } from '../ReviewsCard/ReviewsCard';
@@ -21,7 +22,8 @@ export const Reviews = () => {
       try {
         const results = await API.getMovieReviews(movieId);
         if (results.length === 0) {
-          setError('Sorry, we don`t have reviews of this movie yet 😓');
+          toast.warn('Sorry, we don`t have reviews of this movie yet 😓');
+          return;
         }
         setReviews(results);
       } catch (error) {

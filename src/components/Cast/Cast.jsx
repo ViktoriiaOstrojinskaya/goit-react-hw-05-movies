@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { CastCard } from '../CastCard/CastCard';
@@ -21,7 +22,8 @@ export const Cast = () => {
       try {
         const results = await API.getMovieCredits(movieId);
         if (results.length === 0) {
-          setError('Sorry, we don`t have information about cast 😓');
+          toast.warn('Sorry, we don`t have information about cast 😓');
+          return;
         }
         setCast(results);
       } catch (error) {

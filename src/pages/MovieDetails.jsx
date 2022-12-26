@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import { useParams, Link, Outlet } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { MovieDescription } from '../components/MovieDescription/MovieDescription';
@@ -21,7 +22,8 @@ export const MovieDetails = () => {
       try {
         const results = await API.getMovieDetails(movieId);
         if (!results) {
-          setError('Sorry, we don`t have information of this movie 😓');
+          toast.error('Sorry, we don`t have information of this movie 😓');
+          return;
         }
         setMovieDetails(results);
       } catch (error) {

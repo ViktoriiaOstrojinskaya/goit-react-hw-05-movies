@@ -1,9 +1,10 @@
-import { Box, Input } from './SearchBox.styled';
+import { Form, Input } from './SearchBox.styled';
 
 export const SearchBox = () => {
   return (
-    <Box>
-      <Input type="text" />
-    </Box>
+    <Form>
+      <Input type="text" placeholder="Search movie" />
+      <button type="submit">Search</button>
+    </Form>
   );
 };

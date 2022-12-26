@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Box = styled.div`
+export const Form = styled.form`
   display: inline-flex;
   align-items: center;
   position: relative;
