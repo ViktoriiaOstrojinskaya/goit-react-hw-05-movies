@@ -24,3 +24,28 @@ export const getMovieDetails = async movieId => {
     console.error('Something went wrong. Try again!');
   }
 };
+
+export const getMovieCredits = async movieId => {
+  try {
+    const { data } = await axios.get(`movie/${movieId}/credits`);
+    return data.cast;
+  } catch (error) {
+    console.error('Something went wrong. Try again!');
+  }
+};
+
+export const getMovieReviews = async movieId => {
+  try {
+    const { data } = await axios.get(`movie/${movieId}/reviews`);
+    return data.results;
+  } catch (error) {
+    console.error('Something went wrong. Try again!');
+  }
+};
+
+export const searchMovies = async () => {
+  try {
+  } catch (error) {
+    console.error('Something went wrong. Try again!');
+  }
+};

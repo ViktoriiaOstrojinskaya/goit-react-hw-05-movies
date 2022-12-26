@@ -1,6 +1,6 @@
-import { getTrending } from 'components/services/api';
-import { MoviesList } from '../components/MoviesList/MoviesList';
+import { MoviesList } from '../components/MoviesList';
 import { useState, useEffect } from 'react';
+import * as API from '../components/services/api';
 //import { Link } from 'react-router-dom';
 
 export const Home = () => {
@@ -12,13 +12,12 @@ export const Home = () => {
 
   const renderTrending = async () => {
     try {
-      const { results } = await getTrending();
+      const { results } = await API.getTrending();
       setTrending(results);
     } catch (error) {
       console.log(error);
     }
   };
-  getTrending();
 
   return (
     <main>
