@@ -1,17 +1,18 @@
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { SearchBox } from '../components/SearchBox/SearchBox';
+import SearchBox from '../components/SearchBox/SearchBox';
 import { toast } from 'react-toastify';
-import { Loader } from 'components/Loader/Loader';
-import { MoviesList } from '../components/MoviesList';
+import Loader from 'components/Loader/Loader';
+import MoviesList from '../components/MoviesList/MoviesList';
 import * as API from '../components/services/api';
 
-export const Movies = () => {
+const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const movieName = searchParams.get('query') ?? '';
+  const location = useLocation();
 
   useEffect(() => {
     if (!movieName) {
@@ -45,16 +46,17 @@ export const Movies = () => {
   }, [movieName]);
 
   const onSubmit = value => {
-    const nextParams = value !== '' ? { value } : {};
-    setSearchParams(nextParams);
+    setSearchParams(value !== '' ? { value } : {});
   };
 
   return (
     <main>
       <SearchBox value={movieName} onSubmit={onSubmit} />
-      {movies.length > 0 && <MoviesList movies={movies} />}
+      {movies.length > 0 && <MoviesList movies={movies} location={location} />}
       {loading && <Loader />}
       {error && error.message}
     </main>
   );
 };
+
+export default Movies;

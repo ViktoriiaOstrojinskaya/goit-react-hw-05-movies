@@ -1,7 +1,7 @@
 import { ThreeDots } from 'react-loader-spinner';
 import { LoaderBox } from './LoaderBox';
 
-export const Loader = () => {
+const Loader = () => {
   return (
     <LoaderBox>
       <ThreeDots
@@ -17,3 +17,5 @@ export const Loader = () => {
     </LoaderBox>
   );
 };
+
+export default Loader;

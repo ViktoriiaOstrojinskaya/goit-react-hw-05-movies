@@ -1,7 +1,8 @@
+import PropTypes from 'prop-types';
 import defaultActor from '../../images/defaultActor.jpg';
 import { CastCardBox, CastCardItem } from './CastCard.styled';
 
-export const CastCard = ({ cast }) => {
+const CastCard = ({ cast }) => {
   const baseURL = 'https://image.tmdb.org/t/p/w200';
   return (
     <CastCardBox>
@@ -22,4 +23,10 @@ export const CastCard = ({ cast }) => {
         })}
     </CastCardBox>
   );
+};
+
+export default CastCard;
+
+CastCard.propTypes = {
+  cast: PropTypes.object.isRequired,
 };

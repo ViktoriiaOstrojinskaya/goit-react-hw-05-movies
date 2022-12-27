@@ -1,18 +1,17 @@
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Route, Routes } from 'react-router-dom';
-import { Home } from 'pages/Home';
-import { Movies } from 'pages/Movies';
-import { MovieDetails } from 'pages/MovieDetails';
-import { NotFound } from 'pages/NotFound';
-import { Cast } from './Cast/Cast';
-import { Reviews } from './Reviews/Reviews';
-import { SharedLayout } from './SharedLayout/SharedLayout';
-import { MainPage } from './App.styled';
+import Home from 'pages/Home';
+import Movies from 'pages/Movies';
+import MovieDetails from 'pages/MovieDetails/MovieDetails';
+import NotFound from 'pages/NotFound';
+import Cast from './Cast/Cast';
+import Reviews from './Reviews/Reviews';
+import SharedLayout from './SharedLayout/SharedLayout';
 
-export const App = () => {
+const App = () => {
   return (
-    <MainPage>
+    <div style={{ padding: '15px' }}>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />} />
@@ -27,6 +26,8 @@ export const App = () => {
         </Route>
       </Routes>
       <ToastContainer autoClose={3000} theme="colored" />
-    </MainPage>
+    </div>
   );
 };
+
+export default App;

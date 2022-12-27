@@ -1,9 +1,11 @@
-import { MoviesList } from '../components/MoviesList';
+import MoviesList from '../components/MoviesList/MoviesList';
 import { useState, useEffect } from 'react';
 import * as API from '../components/services/api';
+import { useLocation } from 'react-router-dom';
 
-export const Home = () => {
+const Home = () => {
   const [trending, setTrending] = useState([]);
+  const location = useLocation();
 
   useEffect(() => {
     renderTrending();
@@ -21,7 +23,9 @@ export const Home = () => {
   return (
     <main>
       <h2>Trending Movie 🎥🍿</h2>
-      <MoviesList movies={trending} />
+      <MoviesList movies={trending} location={location} />
     </main>
   );
 };
+
+export default Home;

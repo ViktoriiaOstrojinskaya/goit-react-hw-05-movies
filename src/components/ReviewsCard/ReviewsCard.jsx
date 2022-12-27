@@ -1,6 +1,7 @@
+import PropTypes from 'prop-types';
 import { ReviewsCardBox, ReviewsCardItem, Text } from './ReviewsCard.styled';
 
-export const ReviewsCard = ({ reviews }) => {
+const ReviewsCard = ({ reviews }) => {
   return (
     <ReviewsCardBox>
       {reviews &&
@@ -18,4 +19,10 @@ export const ReviewsCard = ({ reviews }) => {
         })}
     </ReviewsCardBox>
   );
+};
+
+export default ReviewsCard;
+
+ReviewsCard.propTypes = {
+  reviews: PropTypes.object.isRequired,
 };

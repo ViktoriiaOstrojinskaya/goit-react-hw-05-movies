@@ -1,12 +1,12 @@
 import { toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { CastCard } from '../CastCard/CastCard';
-import { Loader } from '../Loader/Loader';
+import CastCard from '../CastCard/CastCard';
+import Loader from '../Loader/Loader';
 import { CastList } from './Cast.styled';
 import * as API from '../services/api';
 
-export const Cast = () => {
+const Cast = () => {
   const [cast, setCast] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -44,3 +44,5 @@ export const Cast = () => {
     </CastList>
   );
 };
+
+export default Cast;

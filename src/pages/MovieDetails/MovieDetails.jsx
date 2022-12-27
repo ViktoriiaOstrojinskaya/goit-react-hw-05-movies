@@ -1,17 +1,20 @@
 import { toast } from 'react-toastify';
-import { useParams, Link, Outlet } from 'react-router-dom';
+import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { MovieDescription } from '../components/MovieDescription/MovieDescription';
-import { Loader } from 'components/Loader/Loader';
-import { ButtonBack } from 'components/ButtonBack/ButtonBack';
+import MovieDescription from '../../components/MovieDescription/MovieDescription';
+import Loader from 'components/Loader/Loader';
+import ButtonBack from 'components/ButtonBack/ButtonBack';
 import { DetailList } from './MovieDetails.styled';
-import * as API from '../components/services/api';
+import * as API from '../../components/services/api';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const [movieDetails, setMovieDetails] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const { movieId } = useParams();
+
+  const location = useLocation();
+  const backLinkHref = location.state?.from ?? '/movies';
 
   useEffect(() => {
     if (!movieId) {
@@ -40,16 +43,20 @@ export const MovieDetails = () => {
   return (
     <div>
       {loading && <Loader />}
-      <ButtonBack />
+      <ButtonBack to={backLinkHref} />
       <main>
         {movieDetails && <MovieDescription movieDetails={movieDetails} />}
       </main>
       <DetailList>
         <li>
-          <Link to="cast">Cast</Link>
+          <Link to="cast" state={{ from: backLinkHref }}>
+            Cast
+          </Link>
         </li>
         <li>
-          <Link to="reviews">Review</Link>
+          <Link to="reviews" state={{ from: backLinkHref }}>
+            Review
+          </Link>
         </li>
       </DetailList>
       <Outlet />
@@ -57,3 +64,5 @@ export const MovieDetails = () => {
     </div>
   );
 };
+
+export default MovieDetails;

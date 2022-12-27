@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import defaultMovie from '../../images/defaultMovie.jpg';
 import {
   MovieDescriptionBox,
@@ -7,7 +8,7 @@ import {
   TitleDescription,
 } from './MovieDescription.styled';
 
-export const MovieDescription = ({ movieDetails }) => {
+const MovieDescription = ({ movieDetails }) => {
   const { poster_path, title, release_date, vote_average, overview, genres } =
     movieDetails;
   const movieYear = new Date(release_date).getFullYear();
@@ -33,4 +34,10 @@ export const MovieDescription = ({ movieDetails }) => {
       </TextBox>
     </MovieDescriptionBox>
   );
+};
+
+export default MovieDescription;
+
+MovieDescription.propTypes = {
+  movieDetails: PropTypes.object.isRequired,
 };
