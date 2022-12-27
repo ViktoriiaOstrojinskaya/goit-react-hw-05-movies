@@ -47,14 +47,13 @@ export const getMovieReviews = async movieId => {
 
 export const searchMovies = async query => {
   try {
-    const query = 'batman';
     const { data } = await axios.get(`/search/movie/`, {
       params: {
-        query: query,
+        query,
         language: 'en-US',
       },
     });
-    return data;
+    return data.results;
   } catch (error) {
     console.error(error);
   }

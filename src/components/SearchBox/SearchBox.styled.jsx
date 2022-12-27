@@ -9,7 +9,29 @@ export const Form = styled.form`
 `;
 
 export const Input = styled.input`
-  padding: 8px 32px 8px 8px;
+  height: 25px;
+  padding: 5px;
   border-radius: 4px;
+  border: 1px solid black;
   font: inherit;
+`;
+
+export const SearchButton = styled.button`
+  display: inline-block;
+  width: 55px;
+  height: 38px;
+  padding: 3px;
+  margin-left: 3px;
+
+  justify-content: center;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  background-color: #d5d0c6;
+
+  &:hover,
+  &:focus {
+    background-color: orange;
+    color: white;
+  }
 `;

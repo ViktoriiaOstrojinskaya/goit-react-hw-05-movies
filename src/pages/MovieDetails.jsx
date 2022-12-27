@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { MovieDescription } from '../components/MovieDescription/MovieDescription';
 import { Loader } from 'components/Loader/Loader';
 import { ButtonBack } from 'components/ButtonBack/ButtonBack';
+import { DetailList } from './MovieDetails.styled';
 import * as API from '../components/services/api';
 
 export const MovieDetails = () => {
@@ -43,14 +44,14 @@ export const MovieDetails = () => {
       <main>
         {movieDetails && <MovieDescription movieDetails={movieDetails} />}
       </main>
-      <ul style={{ marginTop: '20px' }}>
+      <DetailList>
         <li>
           <Link to="cast">Cast</Link>
         </li>
-        <li style={{ marginTop: '10px' }}>
+        <li>
           <Link to="reviews">Review</Link>
         </li>
-      </ul>
+      </DetailList>
       <Outlet />
       {error && <p>{error}</p>}
     </div>
