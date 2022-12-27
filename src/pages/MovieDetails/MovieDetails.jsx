@@ -44,9 +44,7 @@ const MovieDetails = () => {
     <div>
       {loading && <Loader />}
       <ButtonBack to={backLinkHref} />
-      <main>
-        {movieDetails && <MovieDescription movieDetails={movieDetails} />}
-      </main>
+      {movieDetails && <MovieDescription movieDetails={movieDetails} />}
       <DetailList>
         <li>
           <Link to="cast" state={{ from: backLinkHref }}>
