@@ -1,23 +1,17 @@
 import PropTypes from 'prop-types';
 import { Form, Input, SearchButton } from './SearchBox.styled';
 
-//import { toast } from 'react-toastify';
-
-const SearchBox = ({ value, onSubmit }) => {
-  const handleSubmit = event => {
-    event.pteventDefault();
-
-    // if (value.trim() === '') {
-    //   toast.warn('Please, enter a request! 🕵️‍♀️');
-    //   return;
-    // }
-
-    onSubmit(event.target.elements.query.value);
-  };
-
+const SearchBox = ({ onSubmit, value, onChange }) => {
   return (
-    <Form onSubmit={handleSubmit}>
-      <Input type="text" defaultValue={value} name="query" />
+    <Form onSubmit={onSubmit}>
+      <Input
+        type="text"
+        autoComplete="off"
+        placeholder="Search movies"
+        name="request"
+        value={value}
+        onChange={onChange}
+      />
       <SearchButton type="submit">Search</SearchButton>
     </Form>
   );
@@ -26,6 +20,7 @@ const SearchBox = ({ value, onSubmit }) => {
 export default SearchBox;
 
 SearchBox.propTypes = {
-  value: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
 };

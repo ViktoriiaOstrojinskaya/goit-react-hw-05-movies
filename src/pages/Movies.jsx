@@ -7,34 +7,47 @@ import MoviesList from '../components/MoviesList/MoviesList';
 import * as API from '../components/services/api';
 
 const Movies = () => {
+  const [request, setRequest] = useState('');
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
-  const movieName = searchParams.get('query') ?? '';
   const location = useLocation();
 
+  const movieName = searchParams.get('query') ?? '';
+
+  const nextParams = request !== '' ? { query: request } : {};
+
+  const searchName = event => {
+    setRequest(event.target.value);
+  };
+
+  const handleSubmit = event => {
+    event.preventDefault();
+
+    if (request.trim() === '') {
+      toast.warn('Please, enter a request! 🕵️‍♀️');
+      return;
+    }
+    setMovies([]);
+    setSearchParams(nextParams);
+    setRequest('');
+  };
+
   useEffect(() => {
-    if (!movieName) {
-      setMovies([]);
+    if (movieName === '') {
       return;
     }
 
     const renderSearchMovies = async () => {
-      if (movieName.trim() === '') {
-        toast.warn('Please, enter a request! 🕵️‍♀️');
-        setMovies([]);
-        return;
-      }
-
-      setLoading(true);
       try {
         const results = await API.searchMovies(movieName);
-
         if (results.length === 0) {
-          toast.warn('Sorry, we can`t find information your request 😓');
+          toast.warn('Sorry, we can`t find information by your request 😓');
           return;
         }
+        setLoading(true);
+        setError(null);
         setMovies(results);
       } catch (error) {
         setError(error);
@@ -45,13 +58,13 @@ const Movies = () => {
     renderSearchMovies();
   }, [movieName]);
 
-  const onSubmit = value => {
-    setSearchParams(value !== '' ? { value } : {});
-  };
-
   return (
     <main>
-      <SearchBox value={movieName} onSubmit={onSubmit} />
+      <SearchBox
+        onSubmit={handleSubmit}
+        value={request}
+        onChange={searchName}
+      />
       {movies.length > 0 && <MoviesList movies={movies} location={location} />}
       {loading && <Loader />}
       {error && error.message}
