@@ -19,6 +19,11 @@ const MoviesList = ({ movies, location }) => {
 export default MoviesList;
 
 MoviesList.propTypes = {
-  movies: PropTypes.array.isRequired,
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+    })
+  ).isRequired,
   location: PropTypes.object.isRequired,
 };

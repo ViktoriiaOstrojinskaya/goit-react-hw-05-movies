@@ -24,5 +24,11 @@ const ReviewsCard = ({ reviews }) => {
 export default ReviewsCard;
 
 ReviewsCard.propTypes = {
-  reviews: PropTypes.object.isRequired,
+  reviews: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      author: PropTypes.string,
+      content: PropTypes.string,
+    })
+  ),
 };

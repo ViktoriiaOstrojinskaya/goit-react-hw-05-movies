@@ -28,5 +28,12 @@ const CastCard = ({ cast }) => {
 export default CastCard;
 
 CastCard.propTypes = {
-  cast: PropTypes.object.isRequired,
+  cast: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      profile_path: PropTypes.string,
+      original_name: PropTypes.string,
+      character: PropTypes.string,
+    })
+  ),
 };
