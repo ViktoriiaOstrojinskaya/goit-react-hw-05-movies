@@ -43,7 +43,7 @@ const Movies = () => {
       setLoading(true);
       try {
         const results = await API.searchMovies(movieName);
-        if (results.length === 0) {
+        if (!results) {
           toast.warn('Sorry, we can`t find information by your request 😓');
           return;
         }
@@ -67,7 +67,7 @@ const Movies = () => {
         onChange={searchName}
       />
       {loading && <Loader />}
-      {movies && <MoviesList movies={movies} location={location} />}
+      {movies.length > 0 && <MoviesList movies={movies} location={location} />}
       {error && <p>{error.message}</p>}
     </main>
   );
