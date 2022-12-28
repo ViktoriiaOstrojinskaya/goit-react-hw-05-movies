@@ -43,7 +43,6 @@ const MovieDetails = () => {
         {movieDetails && <MovieDescription movieDetails={movieDetails} />}
       </main>
       <div>
-        <h2>Additional information</h2>
         <DetailList>
           <li>
             <Link to="cast" state={{ from: backLinkHref }}>
