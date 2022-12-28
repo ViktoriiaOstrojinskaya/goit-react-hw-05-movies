@@ -47,7 +47,6 @@ const Movies = () => {
           toast.warn('Sorry, we can`t find information by your request 😓');
           return;
         }
-
         setError(null);
         setMovies(results);
       } catch (error) {
@@ -68,7 +67,7 @@ const Movies = () => {
         onChange={searchName}
       />
       {loading && <Loader />}
-      {movies.length > 0 && <MoviesList movies={movies} location={location} />}
+      {movies && <MoviesList movies={movies} location={location} />}
       {error && <p>{error.message}</p>}
     </main>
   );
