@@ -43,12 +43,12 @@ const Movies = () => {
       setLoading(true);
       try {
         const results = await API.searchMovies(movieName);
+        setMovies(results);
         if (results.length === 0) {
           toast.warn('Sorry, we can`t find information by your request 😓');
           return;
         }
         setError(null);
-        setMovies(results);
       } catch (error) {
         setError(error);
         toast.error('Oops, something went wrong 🫣 Try again!');
