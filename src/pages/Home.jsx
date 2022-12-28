@@ -24,7 +24,9 @@ const Home = () => {
   return (
     <main>
       <h2>Trending Movie 🎥🍿</h2>
-      <MoviesList movies={trending} location={location} />
+      {trending.length > 0 && (
+        <MoviesList movies={trending} location={location} />
+      )}
     </main>
   );
 };
