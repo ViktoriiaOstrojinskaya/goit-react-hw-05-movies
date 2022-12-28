@@ -1,6 +1,6 @@
 import { toast } from 'react-toastify';
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import MovieDescription from '../../components/MovieDescription/MovieDescription';
 import ButtonBack from 'components/ButtonBack/ButtonBack';
 import { DetailList } from './MovieDetails.styled';
@@ -42,19 +42,23 @@ const MovieDetails = () => {
         <ButtonBack to={backLinkHref} />
         {movieDetails && <MovieDescription movieDetails={movieDetails} />}
       </main>
-      <DetailList>
-        <li>
-          <Link to="cast" state={{ from: backLinkHref }}>
-            Cast
-          </Link>
-        </li>
-        <li>
-          <Link to="reviews" state={{ from: backLinkHref }}>
-            Review
-          </Link>
-        </li>
-      </DetailList>
-      <Outlet />
+      <div>
+        <h2>Additional information</h2>
+        <DetailList>
+          <li>
+            <Link to="cast" state={{ from: backLinkHref }}>
+              Cast
+            </Link>
+          </li>
+          <li>
+            <Link to="reviews" state={{ from: backLinkHref }}>
+              Review
+            </Link>
+          </li>
+        </DetailList>
+        <Suspense fallback={null} />
+        <Outlet />
+      </div>
       {error && <p>{error.message}</p>}
     </div>
   );

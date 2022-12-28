@@ -67,7 +67,7 @@ const Movies = () => {
         onChange={searchName}
       />
       {loading && <Loader />}
-      {!!movies.length && <MoviesList movies={movies} location={location} />}
+      {movies.length > 0 && <MoviesList movies={movies} location={location} />}
       {error && <p>{error.message}</p>}
     </main>
   );
