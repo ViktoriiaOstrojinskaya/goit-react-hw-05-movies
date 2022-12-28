@@ -1,4 +1,3 @@
-//import { toast } from 'react-toastify';
 import axios from 'axios';
 
 export const KEY = '500d9ce9bd19caed28c8e80a6fa70303';
@@ -7,7 +6,6 @@ axios.defaults.headers.common['Authorization'] = KEY;
 axios.defaults.params = {
   api_key: `${KEY}`,
 };
-//const message = toast.error('Something went wrong. Try again!');
 
 export const getTrending = async () => {
   try {

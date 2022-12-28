@@ -26,7 +26,7 @@ export default ReviewsCard;
 ReviewsCard.propTypes = {
   reviews: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number,
+      id: PropTypes.string,
       author: PropTypes.string,
       content: PropTypes.string,
     })

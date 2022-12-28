@@ -2,14 +2,12 @@ import { toast } from 'react-toastify';
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import MovieDescription from '../../components/MovieDescription/MovieDescription';
-import Loader from 'components/Loader/Loader';
 import ButtonBack from 'components/ButtonBack/ButtonBack';
 import { DetailList } from './MovieDetails.styled';
 import * as API from '../../components/services/api';
 
 const MovieDetails = () => {
   const [movieDetails, setMovieDetails] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const { movieId } = useParams();
 
@@ -22,7 +20,6 @@ const MovieDetails = () => {
     }
 
     const renderMovieDetail = async () => {
-      setLoading(true);
       try {
         const results = await API.getMovieDetails(movieId);
         if (!results) {
@@ -32,8 +29,7 @@ const MovieDetails = () => {
         setMovieDetails(results);
       } catch (error) {
         setError(error);
-      } finally {
-        setLoading(false);
+        toast.error('Oops, something went wrong 🫣 Try again!');
       }
     };
 
@@ -43,7 +39,6 @@ const MovieDetails = () => {
   return (
     <div>
       <main>
-        {loading && <Loader />}
         <ButtonBack to={backLinkHref} />
         {movieDetails && <MovieDescription movieDetails={movieDetails} />}
       </main>
@@ -60,7 +55,7 @@ const MovieDetails = () => {
         </li>
       </DetailList>
       <Outlet />
-      {error && <p>{error}</p>}
+      {error && <p>{error.message}</p>}
     </div>
   );
 };

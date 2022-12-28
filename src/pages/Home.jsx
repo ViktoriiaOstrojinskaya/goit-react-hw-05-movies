@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import MoviesList from '../components/MoviesList/MoviesList';
 import { useState, useEffect } from 'react';
 import * as API from '../components/services/api';
@@ -16,7 +17,7 @@ const Home = () => {
       const { results } = await API.getTrending();
       setTrending(results);
     } catch (error) {
-      console.log(error);
+      toast.error('Oops, something went wrong 🫣 Try again!');
     }
   };
 

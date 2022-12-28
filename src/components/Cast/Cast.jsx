@@ -28,6 +28,7 @@ const Cast = () => {
         setCast(results);
       } catch (error) {
         setError(error);
+        toast.error('Oops, something went wrong 🫣 Try again!');
       } finally {
         setLoading(false);
       }
@@ -38,9 +39,9 @@ const Cast = () => {
 
   return (
     <CastList>
-      <CastCard cast={cast} />
-      {error && <p>{error}</p>}
       {loading && <Loader />}
+      {error && <p>{error.message}</p>}
+      <CastCard cast={cast} />
     </CastList>
   );
 };

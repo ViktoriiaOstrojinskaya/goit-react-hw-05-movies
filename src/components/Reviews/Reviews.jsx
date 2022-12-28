@@ -22,12 +22,13 @@ const Reviews = () => {
       try {
         const results = await API.getMovieReviews(movieId);
         if (results.length === 0) {
-          toast.warn('Sorry, we don`t have reviews of this movie yet 😓');
+          toast.warn('Sorry, we don`t have information about cast 😓');
           return;
         }
         setReviews(results);
       } catch (error) {
         setError(error);
+        toast.error('Oops, something went wrong 🫣 Try again!');
       } finally {
         setLoading(false);
       }
@@ -38,9 +39,9 @@ const Reviews = () => {
 
   return (
     <ReviewsList>
-      <ReviewsCard reviews={reviews} />
-      {error && <p>{error}</p>}
       {loading && <Loader />}
+      {error && <p>{error.message}</p>}
+      <ReviewsCard reviews={reviews} />
     </ReviewsList>
   );
 };

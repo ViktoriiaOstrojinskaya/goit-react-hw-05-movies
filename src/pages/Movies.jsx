@@ -40,17 +40,19 @@ const Movies = () => {
     }
 
     const renderSearchMovies = async () => {
+      setLoading(true);
       try {
         const results = await API.searchMovies(movieName);
         if (results.length === 0) {
           toast.warn('Sorry, we can`t find information by your request 😓');
           return;
         }
-        setLoading(true);
+
         setError(null);
         setMovies(results);
       } catch (error) {
         setError(error);
+        toast.error('Oops, something went wrong 🫣 Try again!');
       } finally {
         setLoading(false);
       }
@@ -65,9 +67,9 @@ const Movies = () => {
         value={request}
         onChange={searchName}
       />
-      {movies.length > 0 && <MoviesList movies={movies} location={location} />}
       {loading && <Loader />}
-      {error && error.message}
+      {movies.length > 0 && <MoviesList movies={movies} location={location} />}
+      {error && <p>{error.message}</p>}
     </main>
   );
 };
