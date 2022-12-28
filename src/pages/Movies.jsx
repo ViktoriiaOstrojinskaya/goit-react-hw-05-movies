@@ -44,7 +44,7 @@ const Movies = () => {
       try {
         const results = await API.searchMovies(movieName);
         setMovies(results);
-        if (results.length === 0) {
+        if (setMovies === 0) {
           toast.warn('Sorry, we can`t find information by your request 😓');
           return;
         }
