@@ -22,7 +22,7 @@ const Reviews = () => {
       try {
         const results = await API.getMovieReviews(movieId);
         if (results.length === 0) {
-          toast.warn('Sorry, we don`t have information about cast 😓');
+          toast.warn('Sorry, we don`t have reviews yet 😓');
           return;
         }
         setReviews(results);
