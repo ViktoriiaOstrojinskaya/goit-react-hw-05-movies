@@ -7,6 +7,7 @@ import {
 } from './MovieDescription.styled';
 
 const MovieDescription = ({ movieDetails }) => {
+  console.log(movieDetails);
   const { poster_path, title, release_date, vote_average, overview, genres } =
     movieDetails;
   const movieYear = new Date(release_date).getFullYear();
