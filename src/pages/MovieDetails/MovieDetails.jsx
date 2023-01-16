@@ -55,8 +55,9 @@ const MovieDetails = () => {
             </Link>
           </li>
         </DetailList>
-        <Suspense fallback={null} />
-        <Outlet />
+        <Suspense fallback={null}>
+          <Outlet />
+        </Suspense>
       </div>
       {error && <p>{error.message}</p>}
     </div>
